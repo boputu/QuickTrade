@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Detalles
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+  
+          <ion-card >
+            <ion-card-header>
+              <ion-card-title>{{producto.nombre}} ({{producto.precio}}€)</ion-card-title>
+            </ion-card-header>
+  
+            <ion-card-content *ngIf = "producto.categoria == 'tecnologia'">
+                {{producto.descripcion}}
+                {{producto.categoria}}
+                {{producto.estado}}
+            </ion-card-content>
+
+              
+            <ion-card-content *ngIf = "producto.categoria == 'hogar'">
+                {{producto.descripcion}}
+                {{producto.categoria}}
+            </ion-card-content>
+
+              
+            <ion-card-content *ngIf = "producto.categoria == 'inmobiliaria'">
+                {{producto.descripcion}}
+                {{producto.categoria}}
+                {{producto.metrosCuadrados}}
+                {{producto.numeroBanyos}}
+                {{producto.numeroHabitaciones}}
+                {{producto.localidad}}
+            </ion-card-content>
+
+              
+            <ion-card-content *ngIf = "producto.categoria == 'motor'">
+                {{producto.descripcion}}
+                {{producto.categoria}}
+                {{producto.tipo}}
+                {{producto.anyo}}
+                {{producto.km}}
+            </ion-card-content>
+  
+          </ion-card>
+  
+        </ion-content>

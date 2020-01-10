@@ -1,125 +1,15 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Insertar un producto
+      Inicio
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-        <ion-list>
-          <ion-item>
-              <ion-label color="primary">Nombre:</ion-label>
-            <ion-input [(ngModel)]="nombre" placeholder="Escribe un nombre para tu producto"></ion-input>
-          </ion-item>
 
-          <ion-item>
-              <ion-label color="primary">Descripción:</ion-label>
-            <ion-input [(ngModel)]="descripcion" placeholder="Describe tu producto"></ion-input>
-          </ion-item>
-
-          <ion-item>
-              <ion-label color="primary">Categoría: </ion-label>
-            <ion-select value="categoriaRespuesta" okText="Aceptar" cancelText="Cancelar" [(ngModel)]="categoria">
-              <ion-select-option value="t">Tecnología</ion-select-option>
-              <ion-select-option value="h">Hogar</ion-select-option>
-              <ion-select-option value="i">Inmobilaria</ion-select-option>
-              <ion-select-option value="m">Motor</ion-select-option>
-            </ion-select>
-          </ion-item>
-
-          <ion-item>
-              <ion-label color="primary">Precio (€):</ion-label>
-            <ion-input min="1" type="number" [(ngModel)]="precio"></ion-input>
-          </ion-item>
-
-          <div *ngIf = "categoria == 't'">
-            <ion-item>
-                <ion-label color="primary">Estado del producto: </ion-label>
-              <ion-select [(ngModel)]="estado" value="estadoRespuesta" okText="Aceptar" cancelText="Cancelar">
-                <ion-select-option value="perfecto">Perfecto</ion-select-option>
-                <ion-select-option value="usado">Usado</ion-select-option>
-              </ion-select>
-            </ion-item>
-          </div>
-
-          <div *ngIf = "categoria == 'm'">
-            <ion-item>
-                <ion-label color="primary">Tipo (<ion-icon name="bicycle"></ion-icon>/<ion-icon name="car"></ion-icon>): </ion-label>
-              <ion-select [(ngModel)]="tipo" value="estadoRespuesta" okText="Aceptar" cancelText="Cancelar">
-                <ion-select-option value="coche">Coche</ion-select-option>
-                <ion-select-option value="moto">Moto</ion-select-option>
-              </ion-select>
-            </ion-item>
-
-            <ion-item>
-                <ion-label color="primary">Año: </ion-label>
-                <ion-datetime [(ngModel)]="anyo" displayFormat="YYYY"></ion-datetime>
-            </ion-item>
-
-            <ion-item>
-                <ion-label color="primary">Kilometros: </ion-label>
-                <ion-range [(ngModel)]="km" min="0" max="500000" pin color="secondary">
-                  <ion-icon slot="start" size="small" name="speedometer"></ion-icon>
-                  <ion-icon slot="end" name="speedometer"></ion-icon>
-                </ion-range>
-            </ion-item>
-
-            <ion-button expand="block" (click)="cambiar_oculto()">Mostrar/ocultar foto</ion-button>
-
-            <div *ngIf = "oculto == false">
-            <img [src]="rutaMotor"/>
-            </div>
-
-          </div>
-
-          <div *ngIf = "categoria == 'i'">
-          <ion-item>
-              <ion-label color="primary">Metros cuadrados:</ion-label>
-            <ion-input [(ngModel)]="metrosCuadrados" min="1" type="number"></ion-input>
-          </ion-item>
-
-          <ion-item>
-              <ion-label color="primary">Nº baños:</ion-label>
-            <ion-input [(ngModel)]="numeroBanyos" min="1" type="number"></ion-input>
-          </ion-item>
-
-          <ion-item>
-              <ion-label color="primary">Nº habitaciones:</ion-label>
-            <ion-input [(ngModel)]="numeroHabitaciones" min="1" type="number"></ion-input>
-          </ion-item>
-
-          <ion-item>
-              <ion-label color="primary">Localidad:</ion-label>
-                <ion-select [(ngModel)]="localidad" okText="Aceptar" cancelText="Cancelar" >
-                    <ion-select-option *ngFor="let provincia of provincias" >{{provincia}}</ion-select-option>
-                </ion-select>
-            </ion-item>
-          </div>
+    <ion-button expand="block" routerLink="/productos" routerDirection="forward">Mostrar productos</ion-button>
+    <ion-button expand="block" routerLink="/insertar-productos" routerDirection="forward">Insertar producto</ion-button>
 
 
-        </ion-list>
-
-        <ion-button expand="block" (click)="insertar()">Insertar Producto</ion-button>
-
-        <ion-card *ngFor="let item of productos">
-          <ion-card-header>
-            <ion-card-title>{{item.nombre}} ({{item.precio}}€)</ion-card-title>
-          </ion-card-header>
-
-          <ion-card-content>
-            {{item.descripcion}}
-            {{item.categoria}}
-            {{item.estado}}
-            {{item.metrosCuadrados}}
-            {{item.numeroBanyos}}
-            {{item.numeroHabitaciones}}
-            {{item.localidad}}
-            {{item.tipo}}
-            {{item.anyo}}
-            {{item.km}}
-          </ion-card-content>
-
-        </ion-card>
-
-      </ion-content>
+</ion-content>
