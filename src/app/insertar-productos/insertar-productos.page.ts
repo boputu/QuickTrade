@@ -13,7 +13,7 @@ export class InsertarProductosPage implements OnInit {
   nombre : string;
   descripcion : string;
   precio : number;
-  categoria : string ;
+  categoria: string = "";
   estado : string ;
   metrosCuadrados : number ;
   numeroBanyos : number ;
@@ -27,7 +27,7 @@ export class InsertarProductosPage implements OnInit {
 
   rutaMotor : string = "../../assets/motor.jfif"
 
-  productos: (IProducto|ITecnologia|IInmobiliaria|IMotor)[];
+  productos: (IProducto|ITecnologia|IInmobiliaria|IMotor)[] = [];
 
   provincias = ['Alava','Albacete','Alicante','Almería','Asturias','Avila','Badajoz','Barcelona','Burgos','Cáceres',
   'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
@@ -48,27 +48,73 @@ export class InsertarProductosPage implements OnInit {
     });
     toast.present();
   }
-  
-  insertar(){
-    this.productos.push(
-      {
-        "id" : this.productos.length+1,
-        "nombre" : this.nombre,
-        "descripcion" : this.descripcion,
-        "precio" : this.precio,
-        "categoria" : this.categoria,
-        "estado" : this.estado,
-        "metrosCuadrados" : this.metrosCuadrados,
-        "numeroBanyos" : this.numeroBanyos,
-        "numeroHabitaciones" : this.numeroHabitaciones,
-        "localidad" : this.localidad,
-        "tipo" : this.tipo,
-        "anyo" : this.anyo,
-        "km" : this.km
-      }
-    );
+
+
+  insertar() {
+    console.log(this.categoria);
+
+    let producto: (IProducto|ITecnologia|IInmobiliaria|IMotor)
+
+    switch (this.categoria) {
+      case "m":
+        producto = {
+          "id" : this.productos.length+1,
+          "nombre": this.nombre,
+          "descripcion": this.descripcion,
+          "categoria": this.categoria,
+          "precio": this.precio,
+          "tipo": this.tipo,
+          "km": this.km,
+          "anyo": this.anyo
+        }
+
+        break;
+
+      case "i":
+        producto = {
+          "id" : this.productos.length+1,
+          "nombre": this.nombre,
+          "descripcion": this.descripcion,
+          "categoria": this.categoria,
+          "precio": this.precio,
+          "metrosCuadrados": this.metrosCuadrados,
+          "numeroBanyos": this.numeroBanyos,
+          "numeroHabitaciones": this.numeroHabitaciones,
+          "localidad": this.localidad,
+        }
+
+        break;
+
+      case "t":
+        producto = {
+          "id" : this.productos.length+1,
+          "nombre": this.nombre,
+          "descripcion": this.descripcion,
+          "categoria": this.categoria,
+          "precio": this.precio,
+          "estado": this.estado,
+        }
+
+        break;
+
+      case "h":
+        producto = {
+          "id" : this.productos.length+1,
+          "nombre": this.nombre,
+          "descripcion": this.descripcion,
+          "categoria": this.categoria,
+          "precio": this.precio
+        }
+
+
+        break;
+      default:
+
+    }
+
+    this._productoService.setProducto(producto);
     this.presentToast();
-  
-  }
+
+}
 
 }

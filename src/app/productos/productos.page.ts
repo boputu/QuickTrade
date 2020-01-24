@@ -14,13 +14,21 @@ export class ProductosPage implements OnInit {
 
   rutaMotor : string = "../../assets/motor.jfif"
 
-  productos: (IProducto|ITecnologia|IInmobiliaria|IMotor)[];
+  productos: (IProducto|ITecnologia|IInmobiliaria|IMotor)[] = [];
 
 
 constructor(private _toastCtrl : ToastController, private _productoService : ProductoService){}
 
 ngOnInit(){
-this.productos = this._productoService.getProductos();
+let ref = this._productoService.getProductos();
+
+ref.on("value", snapshot => {
+  snapshot.forEach(child =>{
+    let value = child.val();
+    this.productos.push(value);
+    console.log("he encontrado: " +child.val().nombre)
+  })
+})
 }
 
 cambiar_oculto(){
