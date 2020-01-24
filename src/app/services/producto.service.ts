@@ -8,7 +8,7 @@ export class ProductoService {
 
     productos: (IProducto|ITecnologia|IInmobiliaria|IMotor)[]= [
         {
-          "id" : 1,
+          "id" : "test2",
           "nombre" : "PC",
           "descripcion" : "ueueweuew",
           "categoria" : "motor",
@@ -18,7 +18,7 @@ export class ProductoService {
           "km" : 400
         },
         {
-          "id" : 2,
+          "id" : "test",
           "nombre" : "motico",
           "descripcion" : "ueueweuew",
           "categoria" : "hogar",
@@ -35,14 +35,18 @@ export class ProductoService {
         return ref;
     }
 
-    getProducto() : firebase.database.Reference{
+    getProducto(id) : firebase.database.Reference{
       let ref = this._db.database.ref("productos");
+      ref.orderByKey().equalTo(id);
       return ref;
-        //return this.productos.find(x => x.id == id);
+
     }
 
     setProducto(producto: IProducto|ITecnologia|IInmobiliaria|IMotor){
       let ref = this._db.database.ref("productos");
-      ref.push(producto);
+      let insert = ref.push(producto);
+      let productId = insert.key;
+      ref.child(productId).child("id").set(productId);
+
     }
 }

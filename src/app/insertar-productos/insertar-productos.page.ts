@@ -58,7 +58,7 @@ export class InsertarProductosPage implements OnInit {
     switch (this.categoria) {
       case "m":
         producto = {
-          "id" : this.productos.length+1,
+          "id" : "",
           "nombre": this.nombre,
           "descripcion": this.descripcion,
           "categoria": this.categoria,
@@ -72,7 +72,7 @@ export class InsertarProductosPage implements OnInit {
 
       case "i":
         producto = {
-          "id" : this.productos.length+1,
+          "id" : "",
           "nombre": this.nombre,
           "descripcion": this.descripcion,
           "categoria": this.categoria,
@@ -87,7 +87,7 @@ export class InsertarProductosPage implements OnInit {
 
       case "t":
         producto = {
-          "id" : this.productos.length+1,
+          "id" : "",
           "nombre": this.nombre,
           "descripcion": this.descripcion,
           "categoria": this.categoria,
@@ -99,7 +99,7 @@ export class InsertarProductosPage implements OnInit {
 
       case "h":
         producto = {
-          "id" : this.productos.length+1,
+          "id" : "",
           "nombre": this.nombre,
           "descripcion": this.descripcion,
           "categoria": this.categoria,
