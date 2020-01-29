@@ -11,15 +11,21 @@ import { IProducto, ITecnologia, IInmobiliaria, IMotor } from '../interfaces';
 export class DetailsPage implements OnInit {
 
   
-  id : number;
+  id : string;
   producto: (IProducto|ITecnologia|IInmobiliaria|IMotor);
 
   constructor(private _activatedRoute: ActivatedRoute, private _productoService : ProductoService) { }
 
   ngOnInit() {
-    this.id = +this._activatedRoute.snapshot.paramMap.get('id');
-    console.log(this.id);
-    this.producto = this._productoService.getProducto(this.id);
-   }
+    this.id = this._activatedRoute.snapshot.paramMap.get('id');
+    //this.producto = this._productoService.getProductoById(id);
+    let ref = this._productoService.getProducto(this.id);
+
+    ref.once("value", snapshot=>{
+      this.producto = snapshot.val();
+  });
+
+  }
 
 }
+

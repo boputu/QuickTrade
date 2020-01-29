@@ -35,12 +35,11 @@ export class ProductoService {
         return ref;
     }
 
-    getProducto(id) : firebase.database.Reference{
-      let ref = this._db.database.ref("productos");
-      ref.orderByKey().equalTo(id);
+    getProducto(id){
+      let ref = this._db.database.ref("productos/" + id);
       return ref;
+  }
 
-    }
 
     setProducto(producto: IProducto|ITecnologia|IInmobiliaria|IMotor){
       let ref = this._db.database.ref("productos");
