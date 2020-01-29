@@ -65,7 +65,8 @@ export class InsertarProductosPage implements OnInit {
           "precio": this.precio,
           "tipo": this.tipo,
           "km": this.km,
-          "anyo": this.anyo
+          "anyo": this.anyo,
+          "propietario" : ""
         }
 
         break;
@@ -81,6 +82,7 @@ export class InsertarProductosPage implements OnInit {
           "numeroBanyos": this.numeroBanyos,
           "numeroHabitaciones": this.numeroHabitaciones,
           "localidad": this.localidad,
+          "propietario" : ""
         }
 
         break;
@@ -93,6 +95,7 @@ export class InsertarProductosPage implements OnInit {
           "categoria": this.categoria,
           "precio": this.precio,
           "estado": this.estado,
+          "propietario" : ""
         }
 
         break;
@@ -103,7 +106,8 @@ export class InsertarProductosPage implements OnInit {
           "nombre": this.nombre,
           "descripcion": this.descripcion,
           "categoria": this.categoria,
-          "precio": this.precio
+          "precio": this.precio,
+          "propietario" : ""
         }
 
 

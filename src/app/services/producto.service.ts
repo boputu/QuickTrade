@@ -6,25 +6,7 @@ import { AngularFireDatabase } from '@angular/fire/database';
 
 export class ProductoService {
 
-    productos: (IProducto|ITecnologia|IInmobiliaria|IMotor)[]= [
-        {
-          "id" : "test2",
-          "nombre" : "PC",
-          "descripcion" : "ueueweuew",
-          "categoria" : "motor",
-          "precio" : 55,
-          "tipo" : "coche",
-          "anyo" : 2010,
-          "km" : 400
-        },
-        {
-          "id" : "test",
-          "nombre" : "motico",
-          "descripcion" : "ueueweuew",
-          "categoria" : "hogar",
-          "precio" : 55
-        },
-      ];
+    productos: (IProducto|ITecnologia|IInmobiliaria|IMotor)[]= [];
 
       constructor(private _db: AngularFireDatabase){
 
@@ -45,15 +27,21 @@ export class ProductoService {
       let ref = this._db.database.ref("productos");
       let insert = ref.push(producto);
       let productId = insert.key;
+      /*ref.child(productId).set({
+        id: productId,
+        propietario: "EZWPdoS5rVdG4P54sRBV4YiNOgv1"
+      });*/
+        
       ref.child(productId).child("id").set(productId);
+      ref.child(productId).child("propietario").set("EZWPdoS5rVdG4P54sRBV4YiNOgv1");
     }
 
-    search(id: string){
+    /*search(id: string){
       let ref = this._db.database.ref("productos");
       ref.orderByChild('propietario').equalTo(id).once("value", snapshot => {
         snapshot.forEach(child => {
           console.log("he encontrado "+child.val().nombre);
         })
       });
-    }
+    }*/
 }

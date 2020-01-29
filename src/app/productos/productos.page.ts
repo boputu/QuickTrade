@@ -35,8 +35,6 @@ cambiar_oculto(){
   this.oculto = !this.oculto;
 }
 
-search(){
-  this._productoService.search("EZWPdoS5rVdG4P54sRBV4YiNOgv1");
-}
+
 
 }

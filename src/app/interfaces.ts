@@ -3,7 +3,8 @@ export interface IProducto {
   "nombre" : string,
   "descripcion" : string,
   "categoria" : string,
-  "precio" : number
+  "precio" : number,
+  "propietario" : string
 }
 
 export interface ITecnologia extends IProducto {
