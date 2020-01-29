@@ -46,6 +46,14 @@ export class ProductoService {
       let insert = ref.push(producto);
       let productId = insert.key;
       ref.child(productId).child("id").set(productId);
+    }
 
+    search(id: string){
+      let ref = this._db.database.ref("productos");
+      ref.orderByChild('propietario').equalTo(id).once("value", snapshot => {
+        snapshot.forEach(child => {
+          console.log("he encontrado "+child.val().nombre);
+        })
+      });
     }
 }
