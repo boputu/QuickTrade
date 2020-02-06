@@ -69,6 +69,21 @@ like(id) {
   }*/
 }
 
+dislike(id) {
+
+  let ref = this._productoService.getProductosUsuarios();
+
+  ref.orderByChild("idProducto").equalTo(id).once("value", snapshot => {
+    this.productosUsuarios=[];
+    snapshot.forEach(child => {
+    let clave = child.key;
+    ref.child(clave).remove();
+    })
+    });
+    
+  this.presentToast();
+}
+
 
 
 

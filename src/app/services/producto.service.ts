@@ -17,7 +17,7 @@ export class ProductoService {
         return ref;
     }
 
-    getProductosUsuarios(user): firebase.database.Reference{
+    getProductosUsuarios(): firebase.database.Reference{
       let ref = this._db.database.ref("usuariosProductos");
       return ref;
   }
