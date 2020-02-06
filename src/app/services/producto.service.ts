@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IProducto, ITecnologia, IInmobiliaria, IMotor } from '../interfaces';
+import { IProducto, ITecnologia, IInmobiliaria, IMotor, IProductoUsuarios } from '../interfaces';
 import { AngularFireDatabase } from '@angular/fire/database';
 
 @Injectable()
@@ -22,6 +22,12 @@ export class ProductoService {
       return ref;
   }
 
+
+    setProductoUsuarios(producto: IProductoUsuarios){
+      let ref = this._db.database.ref("usuariosProductos");
+      ref.push(producto);
+
+    }
 
     setProducto(producto: IProducto|ITecnologia|IInmobiliaria|IMotor){
       let ref = this._db.database.ref("productos");

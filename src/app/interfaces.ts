@@ -7,6 +7,11 @@ export interface IProducto {
   "propietario" : string
 }
 
+export interface IProductoUsuarios {
+  "idProducto" : string,
+  "propietario" : string,
+}
+
 export interface ITecnologia extends IProducto {
   "estado" : string
 }
