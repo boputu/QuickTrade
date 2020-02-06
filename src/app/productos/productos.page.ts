@@ -35,6 +35,33 @@ cambiar_oculto(){
   this.oculto = !this.oculto;
 }
 
+async presentToast(){
+  const toast = await this._toastCtrl.create({
+    message: 'Producto actualizado correctamente',
+    duration: 2000,
+    position: "top"
+  });
+  toast.present();
+}
+
+like(idProducto) {
+
+  this.presentToast();
+
+
+  let ref = this._productoService.getProducto(idProducto);
+
+  /*ref.once("value", snapshot => {
+    if (snapshot.child("categoria").val() == "h") {
+      ref.child("nombre").set(this.producto.nombre);
+      ref.child("descripcion").set(this.producto.descripcion);
+      ref.child("precio").set(this.producto.precio);
+      this.presentToast();
+    }
+
+  }*/
+}
+
 
 
 }
